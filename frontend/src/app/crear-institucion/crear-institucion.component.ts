@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { InstitucionService } from '../services/institucion.service';
 
 @Component({
@@ -46,7 +47,6 @@ import { InstitucionService } from '../services/institucion.service';
           {{ enviando ? 'Guardando...' : 'Guardar' }}
         </button>
 
-        <p class="estado ok" *ngIf="mensajeOk">{{ mensajeOk }}</p>
         <p class="estado error" *ngIf="mensajeError">{{ mensajeError }}</p>
       </form>
     </div>
@@ -54,7 +54,6 @@ import { InstitucionService } from '../services/institucion.service';
 })
 export class CrearInstitucionComponent {
   enviando = false;
-  mensajeOk = '';
   mensajeError = '';
 
   form = this.fb.nonNullable.group({
@@ -64,7 +63,11 @@ export class CrearInstitucionComponent {
     activa:    [true]
   });
 
-  constructor(private fb: FormBuilder, private service: InstitucionService) {}
+  constructor(
+    private fb: FormBuilder,
+    private service: InstitucionService,
+    private router: Router
+  ) {}
 
   invalido(campo: string): boolean {
     const c = this.form.get(campo);
@@ -75,14 +78,12 @@ export class CrearInstitucionComponent {
     if (this.form.invalid) return;
 
     this.enviando = true;
-    this.mensajeOk = '';
     this.mensajeError = '';
 
     this.service.crear(this.form.getRawValue()).subscribe({
-      next: (creada) => {
+      next: () => {
         this.enviando = false;
-        this.mensajeOk = `Institución "${creada.nombre}" creada con éxito (Id ${creada.id}).`;
-        this.form.reset({ activa: true });
+        this.router.navigate(['/']);
       },
       error: () => {
         this.enviando = false;
