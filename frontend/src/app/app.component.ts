@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
         <a routerLink="/" routerLinkActive="active"
            [routerLinkActiveOptions]="{ exact: true }">Instituciones</a>
         <a routerLink="/solucion" routerLinkActive="active">Solución</a>
+        <a routerLink="/tecnologias" routerLinkActive="active">Tecnologías</a>
         <a [href]="swaggerUrl" target="_blank" rel="noopener">Swagger</a>
         <a [href]="githubUrl" target="_blank" rel="noopener">GitHub</a>
       </nav>
