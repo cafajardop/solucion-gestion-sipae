@@ -1,0 +1,20 @@
+# .NET
+bin/
+obj/
+*.user
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Override local de desarrollo
+docker-compose.override.yml

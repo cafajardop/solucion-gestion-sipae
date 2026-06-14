@@ -1,0 +1,88 @@
+:root {
+  --azul: #1b4f8a;
+  --azul-claro: #e8f0f8;
+  --gris: #5b6470;
+  --borde: #d9dee5;
+  --rojo: #c0392b;
+  --verde: #1e8449;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Roboto', system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1f2933;
+  background: #f5f7fa;
+}
+
+.topbar {
+  background: var(--azul);
+  color: #fff;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.topbar h1 { font-size: 1.2rem; margin: 0; }
+.topbar nav { display: flex; gap: 1rem; }
+.topbar nav a {
+  color: #cfe0f2;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+.topbar nav a.active, .topbar nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+.container { max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem; }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+label { display: block; font-size: 0.85rem; color: var(--gris); margin-bottom: 0.25rem; }
+
+input[type="text"], input:not([type]) {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  font-size: 0.95rem;
+}
+
+button {
+  background: var(--azul);
+  color: #fff;
+  border: 0;
+  padding: 0.55rem 1.1rem;
+  border-radius: 7px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+button:disabled { background: #aab4c0; cursor: not-allowed; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--borde); }
+th { background: var(--azul-claro); color: var(--azul); font-size: 0.85rem; }
+
+.badge { padding: 0.15rem 0.55rem; border-radius: 20px; font-size: 0.78rem; }
+.badge.si { background: #d5f5e3; color: var(--verde); }
+.badge.no { background: #fdecea; color: var(--rojo); }
+
+.estado { margin-top: 0.75rem; font-size: 0.9rem; }
+.estado.error { color: var(--rojo); }
+.estado.ok { color: var(--verde); }
+.hint { font-size: 0.78rem; color: var(--rojo); margin-top: 0.2rem; }
+
+.paginacion { display: flex; gap: 0.6rem; align-items: center; margin-top: 1rem; }
+.field { margin-bottom: 0.9rem; }
+
+@media print {
+  .topbar { display: none !important; }
+  .container { max-width: 100%; margin: 0; padding: 0; }
+  body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
