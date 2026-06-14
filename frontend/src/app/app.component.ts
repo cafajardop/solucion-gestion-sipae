@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
         <a routerLink="/" routerLinkActive="active"
            [routerLinkActiveOptions]="{ exact: true }">Instituciones</a>
         <a routerLink="/solucion" routerLinkActive="active">Solución</a>
+        <a [href]="swaggerUrl" target="_blank" rel="noopener">Swagger</a>
+        <a [href]="githubUrl" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </header>
     <main class="container">
@@ -20,4 +23,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     </main>
   `
 })
-export class AppComponent {}
+export class AppComponent {
+  githubUrl = 'https://github.com/cafajardop/solucion-gestion-sipae';
+  swaggerUrl = environment.apiUrl.replace(/\/api$/, '') + '/swagger';
+}
